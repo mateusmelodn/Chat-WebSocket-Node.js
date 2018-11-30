@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MessageBoard</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+	<div id="welcome">
+		<h1>WebSocket Chat</h1>
+		What is your name? 
+		<input type="text" id="name">
+		<input type="button" id="name-btn" value="Join Chat" onclick="connectToChat();">
+	</div>
+
+	<div id="chat">
+		<div id="chatBox"></div>
+		<div id="messageForm">
+			<input type="text" id="message">
+			<input type="button" id="message-btn" value="send" onclick="sendMessage();">
+		</div>
+	</div>
+	</body>
+	<script src="./client.js"></script>  
+</html>

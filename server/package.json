@@ -1,0 +1,14 @@
+{
+  "name": "node-chat-server",
+  "version": "1.0.0",
+  "description": "A simple node chat server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mateus Melo do Nascimento | mateus.networking@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^6.1.2"
+  }
+}
