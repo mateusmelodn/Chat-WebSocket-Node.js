@@ -9,6 +9,10 @@
   "author": "Mateus Melo do Nascimento | mateus.networking@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "dat-swarm-defaults": "^1.0.1",
+    "discovery-swarm": "^5.1.2",
+    "get-port": "^4.0.0",
+    "portfinder": "^1.0.19",
     "ws": "^6.1.2"
   }
 }

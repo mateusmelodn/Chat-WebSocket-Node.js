@@ -9,15 +9,21 @@ function connectToChat() {
 	socket.onmessage = function (msg) {
 		var chatBox = document.getElementById("chatBox");
 		var message = JSON.parse(msg.data);
-		chatBox.innerHTML = "<b>" + message.user + "</b>:" + message.text + "<br>" + chatBox.innerHTML;
+		chatBox.innerHTML = "(" + getDateTime() + ")<b> " + message.from + "</b> para <b>Todos</bmessage>: " + message.text + "<br>" + chatBox.innerHTML;
 	};
 
 	socket.onopen = function () {
 		var message = {};
-		message.user = user;
-		message.text = "<b>Joined the chat</b>";
+		message.from = user;
+		message.text = "<b> acabou de entrar no chat.</b>";
 		socket.send(JSON.stringify(message));
 	};
+
+	/*socket.onclose = function (msg) {
+		var chatBox = document.getElementById("chatBox");
+		var message = JSON.parse(msg.data);
+		chatBox.innerHTML = "(" + getDateTime() + ")<b> " + message.from + "</b> para <b>Todos</bmessage>: " + message.text + "<br>" + chatBox.innerHTML;
+	};*/
 
 	document.getElementById("chat").setAttribute("style", "");
 	document.getElementById("welcome").setAttribute("style", "display:none");
@@ -25,7 +31,7 @@ function connectToChat() {
 
 function sendMessage() {
 	var message = {};
-	message.user = user;
+	message.from = user;
 	message.text = document.getElementById("message").value;
 	socket.send(JSON.stringify(message));
 	document.getElementById("message").value = "";
@@ -50,3 +56,19 @@ input.addEventListener("keyup", function(event) {
 		document.getElementById("message-btn").click();
 	}
 });
+
+function getDateTime() {
+	var date = new Date();
+	var hour = date.getHours();
+	hour = (hour < 10 ? "0" : "") + hour;
+	var min  = date.getMinutes();
+	min = (min < 10 ? "0" : "") + min;
+	var sec  = date.getSeconds();
+	sec = (sec < 10 ? "0" : "") + sec;
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	month = (month < 10 ? "0" : "") + month;
+	var day  = date.getDate();
+	day = (day < 10 ? "0" : "") + day;
+	return year + "/" + month + "/" + day + " às " + hour + ":" + min + ":" + sec;
+}
