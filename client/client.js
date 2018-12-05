@@ -9,7 +9,7 @@ function connectToChat() {
 	socket.onmessage = function (msg) {
 		var chatBox = document.getElementById("chatBox");
 		var message = JSON.parse(msg.data);
-		chatBox.innerHTML = "(" + getDateTime() + ")<b> " + message.from + "</b> para <b>Todos</bmessage>: " + message.text + "<br>" + chatBox.innerHTML;
+		chatBox.innerHTML = "(" + getDateTime() + ")<b> " + message.from + "</b> para <b>Todos</b>: " + message.text + "<br>" + chatBox.innerHTML;
 	};
 
 	socket.onopen = function () {
@@ -18,12 +18,6 @@ function connectToChat() {
 		message.text = "<b> acabou de entrar no chat.</b>";
 		socket.send(JSON.stringify(message));
 	};
-
-	/*socket.onclose = function (msg) {
-		var chatBox = document.getElementById("chatBox");
-		var message = JSON.parse(msg.data);
-		chatBox.innerHTML = "(" + getDateTime() + ")<b> " + message.from + "</b> para <b>Todos</bmessage>: " + message.text + "<br>" + chatBox.innerHTML;
-	};*/
 
 	document.getElementById("chat").setAttribute("style", "");
 	document.getElementById("welcome").setAttribute("style", "display:none");
